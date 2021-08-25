@@ -21,7 +21,6 @@ for ii=1:50
 
 	% แสดงภาพใบหน้า 50 ภาพ
 	c00=sprintf('subplot(%d,%d,%d)', M,N,ii);
-%     c00=sprintf('subplot(%d,%d,%d)', 10,5,ii);
     set(f1, 'Position', [10 10 650 950])
 	eval (c00);
 	imagesc(a);
@@ -31,7 +30,7 @@ for ii=1:50
 	% ลบค่าเฉลี่ย
 	aaa=im2double(aa);
 	b=matrix2rowvector(aaa);
-	mn(ii) = mean(aaa);
+	mn(ii) = mean(b);
 	fdata(ii,:) = b - mn(ii);
 
 end
