@@ -1,5 +1,5 @@
 clear
-a = imread('real_00000.jpg');
+a = imread('faceData/real_00000.jpg');
 m = size(a);
 row = m(1);
 col = m(2);
@@ -8,9 +8,9 @@ col = m(2);
 
 for ii=1:50
 	if ii<11
-		c00=sprintf('real_0000%d.jpg', ii-1);
+		c00=sprintf('faceData/real_0000%d.jpg', ii-1);
 	else
-		c00=sprintf('real_000%d.jpg', ii-1);
+		c00=sprintf('faceData/real_000%d.jpg', ii-1);
 	end
 	a = imread(c00);
 	aa=(a(:,:,1));
