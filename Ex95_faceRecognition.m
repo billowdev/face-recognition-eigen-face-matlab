@@ -1,5 +1,9 @@
 clear
+<<<<<<< Updated upstream
 a = imread('faceData/real_00000.jpg')
+=======
+a = imread('real_00000.jpg');
+>>>>>>> Stashed changes
 m = size(a);
 row = m(1);
 col = m(2);
@@ -149,6 +153,7 @@ figure(4), subplot(2,1,2)
 imagesc(a);
 colormap(gray)
 title('Person Indentified');
+<<<<<<< Updated upstream
 axis off
 
 function[out] = rowvector2matrix(in, row, col)
@@ -184,3 +189,6 @@ function [v1,d1] = swap_matrix(v,d)
 end
 
 end
+=======
+axis off
+>>>>>>> Stashed changes
