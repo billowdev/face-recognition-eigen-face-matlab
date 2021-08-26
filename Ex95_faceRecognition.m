@@ -1,9 +1,5 @@
 clear
-<<<<<<< Updated upstream
-a = imread('faceData/real_00000.jpg')
-=======
 a = imread('real_00000.jpg');
->>>>>>> Stashed changes
 m = size(a);
 row = m(1);
 col = m(2);
@@ -12,12 +8,12 @@ col = m(2);
 
 for ii=1:50
 	if ii<11
-		c00=sprintf('faceData/real_0000%d.jpg', ii-1);
+		c00=sprintf('real_0000%d.jpg', ii-1);
 	else
-		c00=sprintf('faceData/real_000%d.jpg', ii-1);
+		c00=sprintf('real_000%d.jpg', ii-1);
 	end
 	a = imread(c00);
-	aa=a(:,:,1);
+	aa=(a(:,:,1));
 
 	f1=figure(1);
 	M=10;
@@ -26,7 +22,7 @@ for ii=1:50
 	% แสดงภาพใบหน้า 50 ภาพ
 	c00=sprintf('subplot(%d,%d,%d)', M,N,ii);
     set(f1, 'Position', [10 10 650 950])
-	eval (c00);
+	eval(c00);
 	imagesc(a);
 	colormap(gray)
 	axis off
@@ -40,8 +36,8 @@ for ii=1:50
 end
 
 % คำนวณไอแกนเวคเตอร์
-c = fdata.*fdata;
-[v,d] = eig(c);
+c = fdata*fdata';
+[v,d] = eig(c); 
 [v,d] = swap_matrix(v,d);
 
 % คำนวณไอแกนเฟส
@@ -68,7 +64,7 @@ for i=1:M
     for j=1:N
         count=count+1;
         c00=sprintf('subplot(%d, %d, %d)', M, N, count);
-        eval (c00);
+        eval(c00);
         if count<11
             c00=sprintf('imagesc(ef0%d);', count-1);
             eval(c00);
@@ -76,7 +72,7 @@ for i=1:M
             axis off
         else
             c00=sprintf('imagesc(ef%d)', count-1);
-            eval (c00);
+            eval(c00);
             colormap(gray)
             axis off
         end
@@ -93,7 +89,7 @@ rcdata=omeca*efdata;
 % แสดงภาพที่สร้างคืน
 for ii=1:50
     e=rcdata(ii,:);
-    e=rcdata(ii, :);
+    e=rcdata(ii,:);
     f=rowvector2matrix(e,row,col)+mn(ii);
     if ii<11
         c00=sprinf('rf0%d=f;', ii-1);
@@ -153,42 +149,4 @@ figure(4), subplot(2,1,2)
 imagesc(a);
 colormap(gray)
 title('Person Indentified');
-<<<<<<< Updated upstream
 axis off
-
-function[out] = rowvector2matrix(in, row, col)
-	m=size(in);
-	for i=1:col
-		out(i,j) = in((i-1)*col+j);
-	end
-end
-
-function [out] = matrix2rowvector(in)
-	m=size(in);
-	row=m(1);
-	col=m(2);
-	for i=1:row
-		out((i-1)*col+1:i*col)=in(i,:);
-	end
-
-function [v1,d1] = swap_matrix(v,d)
-	a=sum(d);
-	mx=max(a);
-	m=size(d);
-	row=m(1);
-	col=m(2);
-
-	if mx == a(1)
-		for i=1:col
-			d1(:,i) = d(:,col-i+1);
-			v1(:,i) = v(:,col-i+1);
-		end
-	else
-		v1=v; d1=d;
-	end
-end
-
-end
-=======
-axis off
->>>>>>> Stashed changes
