@@ -1,6 +1,6 @@
 clc
 clear
-a = imread('faceData/real_00000.jpg');
+a = imread('train_faceData/real_00000.jpg');
 m = size(a);
 row = m(1);
 col = m(2);
@@ -9,9 +9,9 @@ col = m(2);
 
 for ii=1:50
 	if ii<11
-		c00=sprintf('faceData/real_0000%d.jpg', ii-1);
+		c00=sprintf('train_faceData/real_0000%d.jpg', ii-1);
 	else
-		c00=sprintf('faceData/real_000%d.jpg', ii-1);
+		c00=sprintf('train_faceData/real_000%d.jpg', ii-1);
 	end
 	a = imread(c00);
 	aa=(a(:,:,1));
@@ -131,7 +131,7 @@ end
 %  ------------------------------------------------------
 
 % ระบุใบหน้าที่ไม่รู้จัก
-a = imread('unknow1.jpg');
+a = imread('test_faceData/unknow1.jpg');
 a = a(:,:,1);
 a = im2double(a);
 aa = matrix2rowvector(a);
@@ -155,7 +155,7 @@ else
 end
 
 % a = imread(c00);
-a = imread('knowface.jpg');
+a = imread('test_faceData/knowface.jpg');
 aa = a(:,:,1);
 figure(4), subplot(2,1,2)
 imagesc(a);
