@@ -102,19 +102,23 @@ for ii=1:50
         eval(c00);
     end
 end
+
 figure(3);
+
 M=10;
 N=5;
 count=0;
+
 for i=1:M
     for j=1:N
         count=count+1;
-        c00=sprintf('subplot(%d,%d,%d',M,N,count);
+
+        c00=sprintf('subplot(%d,%d,%d)',M,N,count);
         eval(c00);
-        if count<50
+        if count<51
             c00=sprintf('imagesc(rf%d)', count-1);
             eval(c00);
-            colormap(graay)
+            colormap(gray)
             axis off
         else
             c00=sprinf('imagesc(rf%d', count-1);
