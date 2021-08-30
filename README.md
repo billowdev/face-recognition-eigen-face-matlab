@@ -1,7 +1,7 @@
 # MATLAB-Face-Recognition-EigenFace
 Bug Fix MATLAB-Exsample-Face-Recognition-EigenFace
 
-### Download link
+### Face Download link
 - https://tinyurl.com/3yckm894
 
 ### Dataset from kaggle
