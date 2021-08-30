@@ -103,8 +103,8 @@ for ii=1:50
     end
 end
 
-figure(3);
-
+f3 = figure(3);
+set(f3, 'Position', [50 9 650 950]);
 M=10;
 N=5;
 count=0;
@@ -129,15 +129,18 @@ for i=1:M
     end
 end
 %  ------------------------------------------------------
+
 % ระบุใบหน้าที่ไม่รู้จัก
-a = imread('unknow3.jpg');
+a = imread('unknow1.jpg');
 a = a(:,:,1);
 a = im2double(a);
 aa = matrix2rowvector(a);
 pr=efdata*aa';
+
 for ii=1:50
     er(ii) = sum(abs(omeca(:,ii)-pr));
 end
+
 [Y, I] = min(er)
 figure(4), subplot(2,1,1)
 imagesc(a);
@@ -145,11 +148,12 @@ colormap(gray)
 
 axis off
 title('Anonumous');
-if I<50
-    c00=sprinf('face0000%d.jpg', I-1);
+if I<51
+    c00=sprintf('face0%d.jpg', I-1);
 else
-    c00=sprinf('face000%d.jpg', I-1);
+    c00=sprintf('face0%d.jpg', I-1);
 end
+
 a = imread(c00);
 aa = a(:,:,1);
 figure(4), subplot(2,1,2)
