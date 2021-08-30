@@ -36,6 +36,7 @@ for ii=1:50
 end
 
 % คำนวณไอแกนเวคเตอร์
+% c = fdata*fdata';
 c = fdata*fdata';
 [v,d] = eig(c); 
 [v,d] = swap_matrix(v,d);
@@ -66,6 +67,7 @@ for i=1:M
         c00=sprintf('subplot(%d, %d, %d)', M, N, count);
         eval(c00);
         if count<11
+            % c00=sprintf('imagesc(ef0%d);', count-1);
             c00=sprintf('imagesc(ef0%d);', count-1);
             eval(c00);
             colormap(gray);
@@ -80,7 +82,7 @@ for i=1:M
 end
 
 % คำนวณสัมประะสิทธ์โดยการโปรเจคชันข้อมูลใบหน้าลงบนไอแกนเฟส
-omeca=efdata*fdata;
+omeca=efdata*fdata';
 
 %สร้างภาพคืน
 
@@ -88,7 +90,6 @@ rcdata=omeca*efdata;
 
 % แสดงภาพที่สร้างคืน
 for ii=1:50
-    e=rcdata(ii,:);
     e=rcdata(ii,:);
     f=rowvector2matrix(e,row,col)+mn(ii);
     if ii<11
@@ -127,7 +128,7 @@ a = imread('unknow3.jpg');
 a = a(:,:,1);
 a = im2double(a);
 aa = matrix2rowvector(a);
-pr=efdata*aa;
+pr=efdata*aa';
 for ii=1:50
     er(ii) = sum(abs(omeca(:,ii)-pr));
 end
@@ -139,9 +140,9 @@ colormap(gray)
 axis off
 title('Anonumous');
 if I<11
-    c00=sprinf('face0%d.jpg', I-1);
+    c00=sprinf('face0000%d.jpg', I-1);
 else
-    c00=sprinf('face%d.jpg', I-1);
+    c00=sprinf('face000%d.jpg', I-1);
 end
 a = imread(c00);
 aa = a(:,:,1);
