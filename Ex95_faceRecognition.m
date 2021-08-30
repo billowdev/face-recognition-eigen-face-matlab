@@ -154,10 +154,11 @@ else
     c00=sprintf('face0%d.jpg', I-1);
 end
 
-a = imread(c00);
+% a = imread(c00);
+a = imread('knowface.jpg');
 aa = a(:,:,1);
 figure(4), subplot(2,1,2)
 imagesc(a);
 colormap(gray)
-title('Person Indentified');
+title('Person Identified');
 axis off
