@@ -1,3 +1,4 @@
+clc
 clear
 a = imread('faceData/real_00000.jpg');
 m = size(a);
@@ -21,7 +22,7 @@ for ii=1:50
 
 	% แสดงภาพใบหน้า 50 ภาพ
 	c00=sprintf('subplot(%d,%d,%d)', M,N,ii);
-    set(f1, 'Position', [10 10 650 950])
+    set(f1, 'Position', [10 10 650 950]);
 	eval(c00);
 	imagesc(a);
 	colormap(gray)
@@ -34,7 +35,7 @@ for ii=1:50
 	fdata(ii,:) = b - mn(ii);
 
 end
-
+% ---------------------------------------------------------
 % คำนวณไอแกนเวคเตอร์
 % c = fdata*fdata';
 c = fdata*fdata';
@@ -49,15 +50,16 @@ efdata = v'*fdata;
 for ii=1:50
     e=efdata(ii,:);
     f = rowvector2matrix(e,row,col);
-    if ii<11
+    if ii<51
         c00=sprintf('ef%d=f;', ii-1);
         eval(c00);
     else
         c00=sprintf('ef%d=f;', ii-1);
     end
 end
-
-figure(2)
+% #################################
+f2=figure(2)
+set(f2, 'Position', [50 9 650 950]);
 M=10;
 N=5;
 count=0;
@@ -66,9 +68,9 @@ for i=1:M
         count=count+1;
         c00=sprintf('subplot(%d, %d, %d)', M, N, count);
         eval(c00);
-        if count<11
+        if count<51
             % c00=sprintf('imagesc(ef0%d);', count-1);
-            c00=sprintf('imagesc(ef0%d);', count-1);
+            c00=sprintf('imagesc(ef%d);', count-1);
             eval(c00);
             colormap(gray);
             axis off
@@ -80,7 +82,7 @@ for i=1:M
         end
     end
 end
-
+% --------------------------------------------- Figure 3 ------------------------------------------------
 % คำนวณสัมประะสิทธ์โดยการโปรเจคชันข้อมูลใบหน้าลงบนไอแกนเฟส
 omeca=efdata*fdata';
 
@@ -92,11 +94,11 @@ rcdata=omeca*efdata;
 for ii=1:50
     e=rcdata(ii,:);
     f=rowvector2matrix(e,row,col)+mn(ii);
-    if ii<11
-        c00=sprinf('rf0%d=f;', ii-1);
+    if ii<50
+        c00=sprintf('rf%d=f;', ii-1);
         eval(c00);
     else
-        c00=sprinf('rf%d=f;',ii-1);
+        c00=sprintf('rf%d=f;',ii-1);
         eval(c00);
     end
 end
@@ -107,10 +109,10 @@ count=0;
 for i=1:M
     for j=1:N
         count=count+1;
-        c00=sprinf('subplot(%d,%d,%d',M,N,count);
+        c00=sprintf('subplot(%d,%d,%d',M,N,count);
         eval(c00);
-        if count<11
-            c00=sprintf('imagesc(rf0%d)', count-1);
+        if count<50
+            c00=sprintf('imagesc(rf%d)', count-1);
             eval(c00);
             colormap(graay)
             axis off
@@ -122,8 +124,8 @@ for i=1:M
         end
     end
 end
-
-% ระบุใบหน้าที่ไม่รู้จัก
+ ------------------------------------------------------
+ระบุใบหน้าที่ไม่รู้จัก
 a = imread('unknow3.jpg');
 a = a(:,:,1);
 a = im2double(a);
@@ -139,7 +141,7 @@ colormap(gray)
 
 axis off
 title('Anonumous');
-if I<11
+if I<50
     c00=sprinf('face0000%d.jpg', I-1);
 else
     c00=sprinf('face000%d.jpg', I-1);
