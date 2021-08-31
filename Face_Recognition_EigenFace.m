@@ -28,7 +28,7 @@ for ii=1:50
 
 	% แสดงภาพใบหน้า 50 ภาพ (50 face images are displayed.)
 	c00=sprintf('subplot(%d,%d,%d)', M,N,ii);
-    set(f1, 'Position', [10 10 650 950]);
+    set(f1, 'Position', [0 0 600 850]);
 	eval(c00);
 	imagesc(a);
 	colormap(gray)
@@ -67,7 +67,7 @@ end
 % -------------------------------------- %
 
 f2=figure(2)
-set(f2, 'Position', [150 9 650 950]);
+set(f2, 'Position', [650 0 600 850]);
 M=10;
 N=5;
 count=0;
@@ -113,7 +113,7 @@ for ii=1:50
 end
 
 f3 = figure(3);
-set(f3, 'Position', [300 9 650 950]);
+set(f3, 'Position', [650 0 600 850]);
 M=10;
 N=5;
 count=0;
@@ -144,14 +144,15 @@ a = imread('test_faceData/unknow1.jpg');
 a = a(:,:,1);
 a = im2double(a);
 aa = matrix2rowvector(a);
-pr=efdata*aa';
+pr=efdata*aa';          
 
 for ii=1:50
     er(ii) = sum(abs(omeca(:,ii)-pr));
 end
 
 [Y, I] = min(er)
-figure(4), subplot(2,1,1)
+f4 = figure(4), subplot(2,1,1)
+set(f4, 'Position', [700 50 400 650]);
 imagesc(a);
 colormap(gray)
 
@@ -169,6 +170,7 @@ end
 a = imread('test_faceData/knowface.jpg');
 aa = a(:,:,1);
 figure(4), subplot(2,1,2)
+
 imagesc(a);
 colormap(gray)
 title('Person Identified');
